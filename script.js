@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridSize = 6;
     let currentStep = 0;
     let correctPattern = [];
+    let showNumbers = false; // Flag to control number display
 
     // Define patterns for each button
     const patterns = {
@@ -16,12 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setPattern(type) {
         correctPattern = patterns[type] || patterns.pattern1;
+        showNumbers = (type === 'contoh');
         resetGame();
         // Update active class for pattern buttons
         document.querySelectorAll('.pattern-button').forEach(button => {
             button.classList.remove('active');
         });
         document.querySelector(`.pattern-button[data-pattern="${type}"]`).classList.add('active');
+        updateButtonTexts(); // Update button texts based on selected pattern
     }
 
     document.querySelectorAll('.pattern-button').forEach(button => {
@@ -31,11 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    function updateButtonTexts() {
+        buttons.forEach(button => {
+            if (showNumbers) {
+                button.innerText = button.dataset.index; // Show number if pattern is 'contoh'
+            } else {
+                button.innerText = ''; // Hide number for other patterns
+            }
+        });
+    }
+
     for (let i = 0; i < gridSize * gridSize; i++) {  // 6x6 grid has 36 buttons
         const button = document.createElement('button');
         button.classList.add('button');
         button.dataset.index = i;
-        button.innerText = i;  // Display the index number on the button
         button.addEventListener('click', handleButtonClick);
         gridContainer.appendChild(button);
         buttons.push(button);
