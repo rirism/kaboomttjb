@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+.title {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    margin-bottom: 20px;
+}
+
+.pattern-button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff; /* Default color for pattern buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.pattern-button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+.pattern-button.active {
+    background-color: #28a745 !important; /* Green for active pattern button */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 60px);
+    grid-template-rows: repeat(6, 60px);
+    gap: 10px;
+    margin: 0 auto;
+    max-width: 380px; /* Limit grid width to ensure proper alignment */
+}
+
+.button {
+    width: 60px;
+    height: 60px;
+    background-color: #ffeb3b; /* Default fill color */
+    border: none; /* Remove border to show only the fill color */
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button.correct {
+    background-color: #4caf50; /* Green for correct buttons */
+    color: white; /* Change text color to white for contrast */
+}
+
+.button.incorrect {
+    background-color: #f44336; /* Red for incorrect buttons */
+    color: white; /* Change text color to white for contrast */
+}
+
+.button:hover {
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
